@@ -13,7 +13,11 @@
 
 	{{ghost_head}}
 </head>
-
+   {{# if post}}
+        <link rel="stylesheet" type="text/css" href="{{asset "css/valine.css"}}" />
+        <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+        <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    {{/if}}
 <body class="{{body_class}}">
 
 	{{navigation}}
@@ -22,8 +26,8 @@
 		<a class="hidden-close"></a>
 		{{{body}}}
 		<div id="body-class" style="display: none;" class="{{body_class}}"></div>
-
 		<footer id="footer">
+		        
 			<div class="inner">
 				<section class="credits">
 					<span class="credits-theme">{{t "Theme" }} <a href="https://github.com/zutrinken/attila">Attila</a> {{t "by"}} <a href="http://zutrinken.com" rel="nofollow">zutrinken</a></span>

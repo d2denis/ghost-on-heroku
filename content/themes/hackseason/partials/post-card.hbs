@@ -1,0 +1,46 @@
+<article class="post-card {{post_class}}{{#unless feature_image}} no-image{{/unless}}">
+    {{#if feature_image}}
+        <a class="post-card-image-link" href="{{url}}">
+            <div class="post-card-image" style="background-image: url({{feature_image}}?imageView2/1/w/808/h/200/q/75|imageslim)"></div>
+        </a>
+    {{else}}
+        <a class="post-card-image-link" href="{{url}}">
+            <div class="post-card-image" style="background-image: url(http://hackbinimg.luokangyuan.com/defaultBg.jpg?imageView2/1/w/808/h/200/q/75|imageslim)"></div>
+        </a>
+    {{/if}}
+    <div class="post-card-content">
+        <a class="post-card-content-link" href="{{url}}">
+            <header class="post-card-header">
+                <span class="color-gray"><b>{{date}}（{{date published_at timeago="true"}}）</b></span>
+                <h2 class="post-card-title">{{title}}</h2>
+            </header>
+            <section class="post-card-excerpt">
+                <p>{{excerpt characters="33"}}</p>
+            </section>
+        </a>
+        {{!-- 作者信息 --}}
+        <footer class="post-card-meta">
+            <div class="top-post-author">
+                {{!-- 标签 --}}
+                {{#if tags}}
+                    {{#foreach tags}}
+                        <a href="{{url}}" target="_blank" class="aib-tag-item color-blue">{{name}}</a>
+                        <span>&nbsp;&nbsp;</span>
+                    {{/foreach}}
+                {{/if}}
+            </div>
+            <span class="reading-time read-time-title">
+                <b>
+                    {{!-- 评论 --}}
+                    <i class="icon-pinglun"></i>
+                    <span id = "sourceId::{{id}}" class = "cy_cmt_count" ></span>&nbsp;
+                    <script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cytKgKylg">
+                    </script>
+                    {{!-- 阅读时间 --}}
+                    <i class="icon-time"></i>&nbsp;{{reading_time minute=(t "1 min read") minutes=(t "% min read")}}
+                </b>
+            </span>
+
+        </footer>
+    </div>
+</article>

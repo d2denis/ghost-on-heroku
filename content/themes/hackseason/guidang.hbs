@@ -1,0 +1,47 @@
+﻿{{!< default}}
+
+{{!-- 自定义归档页面 --}}
+
+<header class="site-header outer" style="height:0px;">
+    <div class="inner">
+        {{> "site-nav"}}
+    </div>
+</header>
+
+<main id="site-main" class="site-main">
+    <div class="guidang-content">
+        <div class="top">
+            <span class="title">博客归档</span>
+            <video class="video" muted autoplay loop>
+                <source src="https://res.cloudinary.com/hppcggqdk/video/upload/v1552271748/blog-video/theme/hackbinimg.luokangyuan.combannerguidang.mp4">
+            </video>
+              
+        </div>
+        <div class="gd-content">
+            <div class="gd-echart">
+                <div class="chart" id="leida"></div>
+                <div class="chart" id="line"></div>
+            </div>
+            <div class="gd-time-line">
+                <h2 class="title">千万不要滑到底部</h2>
+            </div>
+            <div class="tree-bottom">
+                <img src="https://res-3.cloudinary.com/hppcggqdk/image/upload/q_auto/v1/blog-images/treebottombg.png" alt="" srcset="">
+                <br>
+                <div>
+                    <h1>
+                        滑稽树上滑稽果，滑稽树下你和我。
+                    </h1>
+                    <h1>
+                        滑稽树边敲代码，你的bug多余我。
+                    </h1>
+                </div>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/echarts/4.2.0-rc.2/echarts.js"></script>
+<script src="{{asset "js/guidang.js"}}"></script>

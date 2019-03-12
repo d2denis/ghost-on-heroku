@@ -1,0 +1,89 @@
+{{!< default}}
+{{!-- The tag above means - insert everything in this file into the {body} of the default.hbs template --}}
+{{#author}}
+{{!-- Everything inside the #author tags pulls data from the author --}}
+<header class="site-header outer author-header"
+ {{#if cover_image}} 
+    style="background-image: url({{cover_image}})"
+ {{else}}
+    style="background-image: url(http://hackbinimg.luokangyuan.com/defaultBg.jpg)"
+ {{/if}}
+ >
+    <div class="inner">
+        {{> "site-nav"}}
+        <div class="site-header-content">
+            {{#if profile_image}}
+                <img class="author-profile-image" src="{{profile_image}}" alt="{{name}}" />
+            {{else}}
+                <img class="author-profile-image" src="http://hackbinimg.luokangyuan.com/default-head.png" alt="{{name}}" />
+            {{/if}}
+            <h1 class="site-title">{{name}}</h1>
+            {{#if bio}}
+                <h2 class="author-bio">{{bio}}</h2>
+            {{/if}}
+            <div class="author-meta">
+                {{#if location}}
+                    <div class="author-location">{{location}}</div>
+                {{/if}}
+                <div class="author-stats">
+                    <span class="bull">&bull;</span>
+                    {{plural ../pagination.total empty='暂未发布文章' singular='% 篇文章' plural='% 篇文章'}}
+                </div>
+                {{#if website}}
+                <span class="bull">&bull;</span>
+                    <a class="social-link social-link-wb" href="{{website}}" target="_blank" rel="noopener">个人网站</a>
+                {{/if}}
+                {{!-- {{#if twitter}}
+                    <a class="social-link social-link-tw" href="{{twitter_url}}" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
+                {{/if}}
+                {{#if facebook}}
+                    <a class="social-link social-link-fb" href="{{facebook_url}}" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
+                {{/if}}
+                <a class="social-link social-link-rss" href="https://feedly.com/i/subscription/feed/{{url absolute="true"}}rss/" target="_blank" rel="noopener">{{> "icons/rss"}}</a> --}}
+            </div> 
+        </div>
+    </div>
+</header>
+{{/author}}
+
+{{!-- The main content area --}}
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <div class="post-feed">
+            {{#foreach posts}}
+
+                {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
+                {{> "post-card"}}
+            {{/foreach}}
+            {{ pagination}} 
+        </div>
+
+        <div class="page-load-status">
+            <p class="infinite-scroll-request">
+                {{#if @blog.icon}}
+                    <img  class="status-img loading" src="{{@blog.icon}}" alt="{{@blog.title}}" />
+                {{else}}
+                    <img class="status-img loading" src="http://pcqg5j51d.bkt.clouddn.com/20180731220789/logoblue.png" alt="" srcset="">
+                {{/if}}
+                加载中...
+            </p>
+            <p class="infinite-scroll-last">
+                {{#if @blog.icon}}
+                    <img  class="status-img" src="{{@blog.icon}}" alt="{{@blog.title}}" />
+                {{else}}
+                    <img class="status-img" src="http://pcqg5j51d.bkt.clouddn.com/20180731220789/logoblue.png" alt="" srcset="">
+                {{/if}}
+                没有更多文章了
+            </p>
+            <p class="infinite-scroll-error">
+                {{#if @blog.icon}}
+                    <img  class="status-img" src="{{@blog.icon}}" alt="{{@blog.title}}" />
+                {{else}}
+                    <img class="status-img" src="http://pcqg5j51d.bkt.clouddn.com/20180731220789/logoblue.png" alt="" srcset="">
+                {{/if}}
+                貌似出错了，点下首页或者刷新试试？
+            </p>
+        </div>
+    </div>
+</main>

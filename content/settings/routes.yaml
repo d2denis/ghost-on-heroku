@@ -1,0 +1,31 @@
+routes:
+  /:
+    controller: channel
+    template: 
+      - home
+      - index
+  /guidang/:
+    template: 
+      - guidang
+      - page-archives
+
+collections:
+  /blog/:
+    permalink: /blog/{slug}/
+    filter: tag:[gao-xiao, ji-nian]
+    template: 
+      - index
+  /ml/:
+    permalink: /ml/{slug}/
+    filter: tag:[getting-started, ml]
+    template: 
+      - index
+  /etc/:
+    permalink: /etc/{slug}/
+    filter: tag:-[getting-started, ml]+tag:-[gao-xiao, ji-nian]
+    template: 
+      - index
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/
