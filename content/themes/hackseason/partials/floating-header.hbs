@@ -1,0 +1,16 @@
+<div class="floating-header">
+    <div class="floating-header-content inner">
+        <a href="{{@blog.url}}" class="floating-header-logo">
+            {{#if @blog.icon}}
+                <img src="{{@blog.icon}}" alt="{{@blog.title}} icon" />
+            {{/if}}
+            <span>{{@blog.title}}</span>
+        </a>
+        <div class="floating-header-title">{{title}}</div>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>

@@ -1,0 +1,282 @@
+{{!-- 首页文章循环 --}}
+<div class="index-article-box container">
+    <div class="article-left-box">
+
+        {{!-- 所有文章 --}}
+        {{#foreach posts}}
+            {{!-- 第一篇 --}}
+            {{#if @first}}
+                <article class="post-card index-top-post">
+                    {{!-- 文章图片 --}}
+                    {{#if feature_image}}
+                        <a class="post-card-image-link" href="{{url}}">
+                            <div class="post-card-image" style="background-image: url({{feature_image}}?imageView2/1/w/808/h/200/q/75|imageslim)"></div>
+                        </a>
+                    {{else}}
+                        <a class="post-card-image-link" href="{{url}}">
+                            <div class="post-card-image" style="background-image: url(http://hackbinimg.luokangyuan.com/defaultBg.jpg?imageView2/1/w/808/h/200/q/75|imageslim)"></div>
+                        </a>
+                    {{/if}}
+
+                    <div class="post-card-content">
+                        <a class="post-card-content-link" href="{{url}}">
+                            <header class="post-card-header">
+                                <h2 class="post-card-title">{{title}}</h2>
+                            </header>
+                            <section class="post-card-excerpt color-gray">
+                                <p>{{excerpt characters="90"}}</p>
+                            </section>
+                        </a>
+                        {{!-- 标签 --}}
+                        <div class="phone-post-tages">
+                            {{#if tags}}
+                                {{#foreach tags}}
+                                <a href="{{url}}" target="_blank" class="aib-tag-item color-blue">{{name}}</a>
+                                {{/foreach}}
+                            {{/if}}
+                        </div>
+                        {{!-- 作者信息 --}}
+                        <footer class="post-card-meta">
+                            <div class="top-post-author">
+                                {{!-- 头像名字 --}}
+                                {{#author}}
+                                    <a href="{{url}}" class="top-post-user color-gray">
+                                        {{#if profile_image}}
+                                                <img class="top-post-head" src="{{profile_image}}?imageView2/1/w/40/h/40/q/75|imageslim" alt="{{name}}" />
+                                        {{else}}
+                                                <img class="top-post-head" src="http://hackbinimg.luokangyuan.com/default-head.png?imageView2/1/w/40/h/40/q/75|imageslim" alt="{{name}}" />
+                                        {{/if}}
+                                        <span>&nbsp;&nbsp;{{name}}</span>
+                                    </a>
+                                {{/author}}
+                                <span class="reading-time"><b>{{date published_at timeago="true"}}</b></span>
+                                {{!-- 标签 --}}
+                                {{#if tags}}
+                                    <span class="pc-post-tages">
+                                        {{#foreach tags}}
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        <a href="{{url}}" target="_blank" class="aib-tag-item color-blue" title="{{name}}">{{name}}</a>
+                                        {{/foreach}}
+                                    </span>
+                                {{/if}}
+                            </div>
+                            <span class="read-time-title">
+                                {{!-- 阅读量 --}}
+                                {{!-- <span class="post-item-bottom-box color-gray" title="阅读量">
+                                    <i class="icon-data"></i>
+                                    <span id="busuanzi_container_page_pv">
+                                        <span id="busuanzi_value_page_pv"></span>
+                                    </span>
+                                </span>
+                                &nbsp;&nbsp; --}}
+                                {{!-- 评论 --}}
+                                <a href="{{url}}" class="post-item-bottom-box color-gray" title="评论数">
+                                    <i class="icon-pinglun"></i>
+                                    <span id = "sourceId::{{id}}" class = "cy_cmt_count" ></span>
+                                    <script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cytKgKylg">
+                                    </script>
+                                </a>
+                                &nbsp;&nbsp;
+                                {{!-- 阅读时间 --}}
+                                <span class="post-item-bottom-box color-gray" title="阅读时间">
+                                    <i class="icon-time"></i>&nbsp;{{reading_time minute=(t "1 min read") minutes=(t "% min read")}}
+                                </span>
+                            </span>
+
+                        </footer>
+                    </div>
+                </article>
+
+            {{!-- 非第一篇 --}}
+            {{else}}
+                <div class="articale-item-box color-black">
+                    <div class="articale-item-bcontent">
+                        <div class="aib-content">
+                            {{!-- 文章图片 --}}
+                            <a href="{{url}}" class="artical-img-box middle-center"
+                                {{#if feature_image}}
+                                    style="background-image: url({{feature_image}}?imageView2/1/w/130/h/130/q/75|imageslim)"
+                                {{else}}
+                                    style="background-image: url(http://hackbinimg.luokangyuan.com/defaultBg.jpg?imageView2/1/w/130/h/130/q/75|imageslim)"
+                                {{/if}}
+                            >
+                            </a>
+                            <div class="article-txt-box">
+                                {{!-- 文章标题 --}}
+                                <a href="{{url}}" class="title">
+                                    {{title}}
+                                </a>
+                                <div class="aticle-txt color-gray">
+                                    {{!-- 文章内容 --}}
+                                    <a href="{{url}}" class="txt color-gray">
+                                        {{excerpt}}
+                                    </a>
+                                    {{!-- 标签 --}}
+                                    <div class="phone-post-tages sub">
+                                        {{#if tags}}
+                                            {{#foreach tags}}
+                                            <a href="{{url}}" target="_blank" class="aib-tag-item color-blue">{{name}}</a>
+                                            {{/foreach}}
+                                        {{/if}}
+                                    </div>
+                                    <div class="aib-user color-gray">
+                                        {{!-- 作者 --}}
+                                        {{#author}}
+                                            <i class="icon-pen"></i>
+                                            &nbsp;<a href="{{url}}" class="user-name color-gray">{{name}}</a>
+                                        {{/author}}
+                                        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                                        {{!-- 时间 --}}
+                                        <span><i class="icon-rili"></i>&nbsp;{{date published_at timeago="true"}}</span>
+                                        {{!-- 文章标签 --}}
+                                        {{#if tags}}
+                                            <span class="pc-post-tages">
+                                                {{#foreach tags}}
+                                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                <a href="{{url}}" target="_blank" class="aib-tag-item color-blue" title="{{name}}">{{name}}</a>
+                                                {{/foreach}}
+                                            </span>
+                                        {{/if}}
+
+                                        <span class="read-time" title="阅读量">
+                                            {{!-- 阅读量 --}}
+                                            {{!-- <span class="post-item-bottom-box" title="阅读量">
+                                                <i class="icon-data"></i>
+                                                <span id="busuanzi_container_page_pv">
+                                                    <span id="busuanzi_value_page_pv"></span>
+                                                </span>
+                                            </span>
+                                            &nbsp;&nbsp; --}}
+                                            {{!-- 评论 --}}
+                                            <a href="{{url}}" class="post-item-bottom-box color-gray" title="评论数">
+                                                <i class="icon-pinglun"></i>
+                                                <span id = "sourceId::{{id}}" class = "cy_cmt_count" ></span>
+                                                <script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cytKgKylg">
+                                                </script>
+                                            </a>
+                                            &nbsp;&nbsp;
+                                            {{!-- 阅读时间 --}}
+                                            <span class="post-item-bottom-box" title="阅读时间">
+                                                <i class="icon-time"></i>&nbsp;{{reading_time minute=(t "1 min read") minutes=(t "% min read")}}
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/if}}
+        {{/foreach}}
+        {{ pagination}}
+    </div>
+    <br>
+    <div class="article-right-box">
+        {{!-- 作者列表 --}}
+        <div class="ar-item-box ar-author-list">
+            <div class="ar-item-title">
+                <span>作者榜<small class="color-gray">（发布文章大于0）</small></span>
+                <a href="https://jq.qq.com/?_wv=1027&k=5lq4CQD" target="_blank" class="become-user">加入他们</a>
+            </div>
+            <div  class="ar-users-list">
+                {{#get "users" include="count.posts" order="count.posts desc"}}
+                    {{#foreach users}}
+                        {{#if count.posts}}
+                            <a href="/author/{{slug}}" class="ar-user-item">
+                                {{#if profile_image}}
+                                    <img src="{{profile_image}}?imageView2/1/w/40/h/40/q/75|imageslim" alt="" class="head">
+                                {{else}}
+                                    <img src="http://hackbinimg.luokangyuan.com/default-head.png?imageView2/1/w/40/h/40/q/75|imageslim" alt="" class="head">
+                                {{/if}}
+                                <div class="user-msg">
+                                    <div class="name-position">
+                                        <span>{{name}}</span>
+                                        <small>( {{count.posts}} 篇文章 ) </small>
+                                    </div>
+                                    <div class="bio color-gray" title="{{bio}}">
+                                        {{#if bio}}
+                                            {{bio}}
+                                        {{else}}
+                                            bug太多，懒得填写了
+                                        {{/if}}
+                                    </div>
+                                </div>
+                            </a>
+                        {{/if}}
+                    {{/foreach}}
+                {{/get}}
+            </div>
+        </div>
+
+        {{!-- 云标签 --}}
+        <div class="ar-item-box tags">
+            <div class="ar-item-title">
+                标签云<small class="color-gray">（发布文章大于0）</small>
+            </div>
+            {{! Tag Cloud }}
+            {{#get "tags" limit="all" include="count.posts" order="count.posts desc" }}
+                <div class="tag-flex-box">
+                    {{#foreach tags}}
+                        {{#if count.posts}}
+                                <a href="/tag/{{slug}}" class="tag-item ar-tag-items">{{name}} ({{count.posts}})</a>
+                        {{/if}}
+                    {{/foreach}}
+                </div>
+            {{/get}}
+        </div>
+
+        {{!-- 使用主题 --}}
+        <div class="ar-item-box">
+            <div class="ar-item-title">
+                友链接
+            </div>
+            <div class="ar-item-helper" id="friend-link-side">
+                {{!-- <a href="http://w3more.cn/tag/ghost-tag/" class="ar-help-item-box">
+                    <img src="http://hackbinimg.luokangyuan.com/diannao.png" alt="" srcset="">
+                    <span class="link-name color-black">安装博客</span>
+                </a>
+                <a href="https://github.com/mrbin1573/hackSeason" target="_blank" class="ar-help-item-box">
+                    <img src="http://hackbinimg.luokangyuan.com/use-theme.png" alt="" srcset="">
+                    <span class="link-name color-black">使用主题</span>
+                </a>
+                <a href="http://searchmore.cn/" target="_blank" class="ar-help-item-box">
+                    <img src="http://hackbinimg.luokangyuan.com/sousuo.png" alt="" srcset="">
+                    <span class="link-name color-black">搜索工具</span>
+                </a> --}}
+            </div>
+            <div class="visit-count">
+                <span id="busuanzi_container_site_uv"><b>阁下乃本站第 <span id="busuanzi_value_site_uv"></span> 位造访者，荣幸之至</b></span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="index-loader-finish">
+    <div class="page-load-status">
+        <p class="infinite-scroll-request">
+            {{#if @blog.icon}}
+                <img  class="status-img loading" src="{{@blog.icon}}" alt="{{@blog.title}}" />
+            {{else}}
+                <img class="status-img loading" src="http://pcqg5j51d.bkt.clouddn.com/20180731220789/logoblue.png" alt="" srcset="">
+            {{/if}}
+            加载中...
+        </p>
+        <p class="infinite-scroll-last">
+            {{#if @blog.icon}}
+                <img  class="status-img" src="{{@blog.icon}}" alt="{{@blog.title}}" />
+            {{else}}
+                <img class="status-img" src="http://pcqg5j51d.bkt.clouddn.com/20180731220789/logoblue.png" alt="" srcset="">
+            {{/if}}
+            没有更多文章了
+        </p>
+        <p class="infinite-scroll-error">
+            {{#if @blog.icon}}
+                <img  class="status-img" src="{{@blog.icon}}" alt="{{@blog.title}}" />
+            {{else}}
+                <img class="status-img" src="http://pcqg5j51d.bkt.clouddn.com/20180731220789/logoblue.png" alt="" srcset="">
+            {{/if}}
+            貌似出错了，点下首页或者刷新试试？
+        </p>
+    </div>
+</div>

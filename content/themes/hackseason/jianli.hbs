@@ -1,0 +1,76 @@
+{{!< default}}
+
+{{!-- 自定义简历页面 未提供可见入口--}}
+
+<header class="site-header outer" style="height:0px;">
+    <div class="inner">
+        {{> "site-nav"}}
+    </div>
+</header>
+
+<main id="site-main" class="site-main">
+    <div class="guidang-content">
+        <div class="top">
+            <span class="title">个人简历</span>
+            <video class="video" muted autoplay loop>
+                <source src="http://hackbinimg.luokangyuan.com/banner/guidang.mp4">
+            </video>
+              
+        </div>
+        <div class="gd-content">
+            <div class="gd-echart jianli-box">
+                <div class="jianli">
+                    <div class="base-msg">
+                        <div class="head-img">
+                            <img id="head" src="" alt="">
+                        </div>
+                        <div class="txt">
+                        </div>
+                        <div class="contact">
+                            <!-- <h3>联系方式</h3>
+                            <h4>电话</h4> -->
+                        </div>
+                    </div>
+                    <div class="main-msg">
+                        <div class="mian-left">
+                            <div class="main-msg-item">
+                                <h3 class="title">教育经历</h3>
+                                <div class="content education">
+                                    <h4 class="sub-title school"></h4>
+                                    <h4 class="sub-title major"></h4>
+                                    <ul class="item-list">
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="main-msg-item">
+                                <h3 class="title">个人技能</h3>
+                                <div class="content">
+                                    <div class="skill-list">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="main-msg-item">
+                                <h3 class="title">其他介绍</h3>
+                                <div class="content others">
+                                    <ul class="item-list">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-right">
+                            <div class="main-msg-item">
+                                <h3 class="title">工作经历</h3>
+                                <div class="content work-exp">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="{{asset "js/jianli.js"}}"></script>
