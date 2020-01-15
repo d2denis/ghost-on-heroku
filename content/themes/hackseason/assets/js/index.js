@@ -439,7 +439,7 @@ $(function(){
     $('#search-menu').hover(
         //鼠标覆盖
         function () {
-            $.get(ghost.url.api('posts'), { limit: 'all' }).done(function (data) {
+            $.get(api.posts, { limit: 'all' }).done(function (data) {
                 allPosts = data.posts;
             }).fail(function (err) {
             });

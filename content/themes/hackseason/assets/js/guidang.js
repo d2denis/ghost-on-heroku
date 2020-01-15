@@ -3,7 +3,7 @@ function sortNumber(a,b){
     return a - b
 }
 //请求tag数据
-$.get(ghost.url.api('tags', {limit: 'all', 'include': 'count.posts'})).done(function (data) {
+$.get(api.tags, {limit: 'all', 'include': 'count.posts'})).done(function (data) {
     var valueArrTmp = [];
     var indicatorArrTmp = [];
     var max = 0;
@@ -90,7 +90,7 @@ var colorArr = [
     '#5f7c8a',
 ];
 // 请求post数据
-$.get(ghost.url.api('posts', {limit: 'all'})).done(function (data){
+$.get(api.posts).done(function (data){
     var itemParentEl = $('.gd-time-line');
     var blogUrl = $('.brand-logo').attr('href');
     var lineItem = '';
